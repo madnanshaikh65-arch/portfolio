@@ -1,0 +1,872 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+
+        .home {
+            width: 100%;
+            height: 100vh;
+            min-height: 550px;
+
+            background-image:
+                linear-gradient(rgba(0, 0, 0, 0.50),
+                    rgba(0, 0, 0, 0.50)),
+                url(./img/image_1.avif);
+
+            background-size: cover;
+            background-position: center 35%;
+            background-repeat: no-repeat;
+
+            position: relative;
+            color: white;
+        }
+
+
+
+
+        .navbar {
+            width: 100%;
+            padding: 25px 7%;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+
+            background-color: rgba(128, 128, 128, 0.95);
+
+            transition: 0.3s;
+        }
+
+
+        .navbar ul {
+            list-style: none;
+            display: flex;
+            gap: 45px;
+        }
+
+        .navbar ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 15px;
+            letter-spacing: 3px;
+            transition: 0.3s;
+        }
+
+        .navbar ul li a:hover {
+            color: #222;
+            border-bottom: 2px solid white;
+            padding-bottom: 8px;
+        }
+
+        .sun {
+            position: absolute;
+            right: 7%;
+            top: 27px;
+            font-size: 28px;
+            color: white;
+            text-decoration: none;
+        }
+
+        .content {
+            width: 100%;
+            position: absolute;
+            top: 45%;
+            left: 50%;
+            transform: translate(-50%, -20%);
+            text-align: center;
+            padding: 0 15px;
+        }
+
+        .content h2 {
+            font-size: clamp(38px, 5vw, 80px);
+            font-weight: 300;
+            margin-bottom: 15px;
+        }
+
+        .content h1 {
+            font-size: clamp(35px, 5vw, 82px);
+            font-weight: bold;
+            margin-bottom: 30px;
+        }
+
+        .content p {
+            font-size: 17px;
+            letter-spacing: 4px;
+        }
+
+
+       
+        .portfolio {
+            padding: 70px 20px;
+            text-align: center;
+            background-color: black;
+
+        }
+
+        .portfolio h2 {
+            font-size: 35px;
+            margin-bottom: 30px;
+            color: whitesmoke;
+            font-weight: bolder;
+            font-family: 'Times New Roman', Times, serif;
+        }
+
+        .portfolio p {
+
+
+            color: whitesmoke;
+        }
+
+        .companies {
+            width: 100%;
+            min-height: 180px;
+            display: flex;
+            align-items: center;
+            justify-content: space-evenly;
+            gap: 30px;
+            padding-left: 100px;
+            padding-right: 100px;
+        }
+
+        .cardl {
+            width: 25%;
+            min-height: 90px;
+            background-color: #333333;
+            border-radius: 11px;
+            padding-top: 30px;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 13px;
+ letter-spacing: 3px;
+            transition: 0.3s ;
+           
+        }
+
+        
+        .cardl h2 {
+            font-size: 22px;
+            font-weight: bold;
+        }
+        
+        .cardl:hover {
+        
+            background-color: #484747;
+            transform: translateY(-5px);
+        }
+
+
+        .bg {
+            background-color: #333333;
+            text-align: center;
+            padding-top: 50px;
+            color: whitesmoke;
+
+        }
+
+        .cardf {
+            background-color: black;
+        }
+
+        .img {
+            display: flex;
+            align-items: center;
+
+            background-color: #333333;
+        }
+
+        .card2 {
+            background-color: ;
+            display: flex;
+            align-items: center;
+            justify-content: space-evenly;
+            padding-top: 50px;
+            background-color: #303030;
+        }
+
+        .card3 {
+            background-color: ;
+            display: flex;
+            align-items: center;
+            justify-content: space-evenly;
+            padding-top: 50px;
+            background-color: #303030;
+        }
+
+        .cardimg {
+            text-align: center;
+            font-weight: bolder;
+            font-size: 30px;
+            color: whitesmoke;
+            transition: 0.5s;
+            border-radius: 50px;
+
+        }
+
+        .cardimg:hover {
+            filter: contrast(1.3);
+            transform: scale(1.1);
+            color: white;
+
+        }
+
+        .resume {
+            padding: 70px 20px;
+            text-align: center;
+            background-color: black;
+        }
+
+        .resume h2 {
+            font-size: 35px;
+            margin-bottom: 20px;
+            color: whitesmoke;
+        }
+
+        .main {
+            display: flex;
+            gap: 30px;
+            padding: 15px 23px;
+        }
+
+        .column {
+            width: 50%;
+        }
+
+        .column h2 {
+            font-size: 28px;
+            font-weight: normal;
+            margin-bottom: 60px;
+            color: whitesmoke;
+        }
+
+        .card {
+            position: relative;
+            overflow: hidden;
+            isolation: isolate;
+            background-color: #333;
+            padding: 35px;
+            min-height: 245px;
+            margin-bottom: 25px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .card::before {
+            content: "";
+            position: absolute;
+            top: -100%;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            transition: top 0.6s ease;
+            z-index: -1;
+        }
+
+        .card:hover::before {
+            top: 0;
+        }
+
+
+
+        .img1::before {
+            background-image:
+                linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.65)),
+                url("./img/img1.jpg");
+        }
+
+        .img2::before {
+            background-image:
+                linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.65)),
+                url("./img/img2.jpg");
+        }
+
+        .img3::before {
+            background-image:
+                linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.65)),
+                url("./img/img3.jpg");
+        }
+
+        .img4::before {
+            background-image:
+                linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.65)),
+                url("./img/img4.jpg");
+        }
+
+        .img5::before {
+            background-image:
+                linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.65)),
+                url("./img/img5.jpg");
+        }
+
+        .img6::before {
+            background-image:
+                linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.65)),
+                url("./img/img6.jpg");
+        }
+
+
+
+
+
+        .date {
+            font-size: 14px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .card h3 {
+            color: #b4d334;
+            font-size: 23px;
+            font-weight: normal;
+            margin-bottom: 12px;
+        }
+
+        .description {
+            color: #c5c5c5;
+            font-size: 18px;
+            line-height: 1.9;
+            margin-bottom: 24px;
+        }
+
+        .place {
+            color: #a9a9a9;
+            font-size: 18px;
+        }
+
+.about {
+            width: 100%;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 34px 26px;
+            gap: 120px;
+            background-color: rgb(36, 35, 35);
+        }
+
+        .about-img {
+            width: 56%;
+        }
+
+        .about-img img {
+            width: 100%;
+            height: 606px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .about-content {
+            flex: 1;
+            color: white;
+            padding-right: 12px;
+        }
+
+        .about-content h1 {
+            font-size: 36px;
+            font-weight: normal;
+            margin-bottom: 40px;
+        }
+
+        .about-content h1 span {
+            font-weight: bold;
+        }
+
+        .about-content p {
+            color: #b9c3cc;
+            font-size: 20px;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .about-content .small-text {
+            font-size: 18px;
+            margin-bottom: 60px;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 6px;
+            flex-wrap: wrap;
+        }
+
+        .buttons a {
+            text-decoration: none;
+            padding: 14px 30px;
+            border-radius: 30px;
+            font-size: 14px;
+            letter-spacing: 4px;
+            transition: 0.3s;
+        }
+
+        .hire {
+            background-color: #b9cc62;
+            color: #222;
+        }
+
+        .download {
+            background-color: #717b83;
+            color: white;
+        }
+
+        .hire:hover {
+            background-color: white;
+            color: black;
+        }
+
+        .download:hover {
+            background-color: #c6db6b;
+            color: black;
+        }
+.main {
+    width: 100%;
+    padding: 12px 7.5%;
+    background-color: rgb(54, 53, 53);
+}
+
+.main-title {
+    display: none;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: 250px minmax(0, 748px) minmax(220px, 1fr);
+    gap: 500px;
+    align-items: start;
+}
+
+.contact-form {
+    width: 100%;
+}
+
+.contact-details {
+    width: 100%;
+}
+
+h2 {
+    font-size: 34px;
+    font-weight: 400;
+    margin-bottom: 60px;
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 500px;
+    display: block;
+    background-color: #333333;
+    color: white;
+    border: 1px solid #444;
+    border-radius: 5px;
+    padding: 17px 20px;
+    margin-bottom: 20px;
+    font-size: 17px;
+    font-family: Arial, sans-serif;
+    outline: none;
+}
+
+.contact-form input {
+    height: 57px;
+}
+
+.contact-form textarea {
+    height: 203px;
+    resize: vertical;
+}
+
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+    color: #bdbdbd;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    border-color: #bacb62;
+}
+
+.contact-form button {
+    background-color: #bacb62;
+    color: #222;
+    border: none;
+    border-radius: 30px;
+    padding: 16px 30px;
+    font-size: 13px;
+    letter-spacing: 4px;
+    cursor: pointer;
+    transition: 0.3s;
+    white-space: nowrap;
+}
+
+.contact-form button:hover {
+    background-color: #a9ba50;
+    transform: translateY(-3px);
+}
+
+.detail {
+    margin-bottom: 34px;
+}
+
+.detail h4 {
+    font-size: 13px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    color: #aaa;
+    margin-bottom: 18px;
+}
+
+.detail p,
+.detail a {
+    font-size: 17px;
+    line-height: 1.9;
+    color: #aaa;
+    text-decoration: none;
+}
+
+.detail a.email {
+    color: #bacb62;
+}
+  
+
+        footer {
+            background: #222222;
+            color: white;
+            text-align: center;
+            padding: 25px;
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <section class="home" id="home">
+
+        <nav class="navbar">
+            <ul>
+                <li><a href="#home">HOME</a></li>
+                <li><a href="#portfolio">PORTFOLIO</a></li>
+                <li><a href="#resume">RESUME</a></li>
+                <li><a href="#about">ABOUT</a></li>
+                <li><a href="#contact">CONTACT</a></li>
+            </ul>
+            <a href="#home" class="sun">&#9788;</a>
+        </nav>
+
+
+
+
+        <div class="content">
+            <h2>Hello, I'm</h2>
+            <h1>Charles Anderson</h1>
+            <p>AND THIS IS MY RESUME</p>
+        </div>
+
+    </section>
+
+
+    <section class="portfolio" id="portfolio">
+        <p> Trusted By
+        <h2>Leading Brands</h2>
+        </p>
+
+        <div class="companies">
+
+            <div class="cardl">
+
+                <h2>Lumenlab</h2>
+            </div>
+
+            <div class="cardl">
+
+                <h2>Brightloop</h2>
+            </div>
+
+            <div class="cardl">
+
+                <h2>Oakridge</h2>
+            </div>
+
+            <div class="cardl">
+
+                <h2>Veloxa</h2>
+            </div>
+            <div class="cardl">
+
+                <h2>Kindred</h2>
+            </div>
+            <div class="cardl">
+
+                <h2>Tidewell</h2>
+            </div>
+
+        </div>
+
+    </section>
+
+    <section>
+
+
+        <div class="bg">
+            <p>FEATURED
+            <h2>PORTFOLIO</h2>
+            </p>
+        </div>
+        <div class="cardf">
+
+            <div class="card2">
+                <div class="cardimg">
+                    <img src="./img/p1.avif" alt="">
+                    <h3>Square Box Mockup</h3>
+                </div>
+                <div class="cardimg">
+                    <img src="./img/p2.avif" alt="">
+                    <h3>Product Box Package Mockup</h3>
+                </div>
+                <div class="cardimg">
+                    <img src="./img/p3.avif" alt="">
+                    <h3>Creative Package Design</h3>
+                </div>
+
+            </div>
+
+            <div class="card3">
+                <div class="cardimg">
+                    <img src="./img/p4.avif" alt="">
+                    <h3>Packaging Brand</h3>
+                </div>
+                <div class="cardimg">
+                    <img src="./img/p5.avif" alt="">
+                    <h3>Isometric 3D Extrusion</h3>
+                </div>
+                <div class="cardimg">
+                    <img src="./img/p6.avif" alt="">
+                    <h3>White Space Photography</h3>
+                </div>
+
+            </div>
+        </div>
+
+    </section>
+
+    <section class="resume" id="resume">
+        <h2>My Resume</h2>
+        <p>Education, experience and skills.</p>
+        <div class="main">
+
+            
+            <section class="column">
+                <h2>Education</h2>
+
+                <div class="card img1">
+                    <p class="date">▣ September 2014 - June 2016</p>
+                    <h3>Master of Information Technology</h3>
+                    <p class="description">
+                        Even the all-powerful Pointing has no control
+                        about the blind texts it is an almost unorthographic.
+                    </p>
+                    <p class="place">Westbrook University</p>
+                </div>
+
+                <div class="card img2">
+                    <p class="date">▣ September 2010 - June 2014</p>
+                    <h3>Bachelor of Fine Arts in Graphic Design</h3>
+                    <p class="description">
+                        Even the all-powerful Pointing has no control
+                        about the blind texts it is an almost unorthographic.
+                    </p>
+                    <p class="place">Westbrook University</p>
+                </div>
+
+                <div class="card img3">
+                    <p class="date">▣ January 2018 - May 2018</p>
+                    <h3>Certificate in Interaction Design</h3>
+                    <p class="description">
+                        Even the all-powerful Pointing has no control
+                        about the blind texts it is an almost unorthographic.
+                    </p>
+                    <p class="place">Brightloop Studio</p>
+                </div>
+            </section>
+
+
+            <section class="column">
+                <h2>Experience</h2>
+
+                <div class="card img4">
+                    <p class="date">▣ March 2021 - Present</p>
+                    <h3>Lead Product Designer</h3>
+                    <p class="description">
+                        Even the all-powerful Pointing has no control
+                        about the blind texts it is an almost unorthographic.
+                    </p>
+                    <p class="place">Brightloop Studio</p>
+                </div>
+
+                <div class="card img5">
+                    <p class="date">▣ May 2018 - February 2021</p>
+                    <h3>Senior UX Designer</h3>
+                    <p class="description">
+                        Even the all-powerful Pointing has no control
+                        about the blind texts it is an almost unorthographic.
+                    </p>
+                    <p class="place">Brightloop Studio</p>
+                </div>
+
+                <div class="card img6">
+                    <p class="date">▣ July 2016 - April 2018</p>
+                    <h3>Product Designer</h3>
+                    <p class="description">
+                        Even the all-powerful Pointing has no control
+                        about the blind texts it is an almost unorthographic.
+                    </p>
+                    <p class="place">Brightloop Studio</p>
+                </div>
+            </section>
+
+        </div>
+    </section>
+
+
+    <section class="about">
+
+       
+        <div class="about-img">
+            <img src="img/image_1.avif" alt="My Profile">
+        </div>
+
+       
+        <div class="about-content">
+
+            <h1>About <span>Me</span></h1>
+
+            <p>
+                Separated they live in Bookmarksgrove right at the coast
+                of the Semantics, a large language ocean.
+            </p>
+
+            <p class="small-text">
+                A small river named Duden flows by their place and
+                supplies it with the necessary regelialia. It is a
+                paradisematic country, in which roasted parts of
+                sentences fly into your mouth.
+            </p>
+
+            <div class="buttons">
+                <a href="contact.html" class="hire">HIRE ME</a>
+
+                <a href="cv.pdf" class="download" download>
+                    DOWNLOAD CV
+                </a>
+            </div>
+
+        </div>
+
+    </section>
+
+
+     <section class="main">
+<div class="title">
+        <h1 class="main-title">
+            Get <span>In Touch</span>
+        </h1>
+
+        <div class="container">
+
+           
+            <div class="contact-form">
+
+                <h2>Get In Touch</h2>
+
+                <form action="#" method="post">
+
+                    <input type="text"
+                           name="name"
+                           placeholder="Your Name"
+                           required>
+
+                    <input type="email"
+                           name="email"
+                           placeholder="Your Email"
+                           required>
+
+                    <input type="tel"
+                           name="phone"
+                           placeholder="Your Phone">
+
+                    <textarea name="message"
+                              placeholder="Write a Message"
+                              required></textarea>
+
+                    <button type="submit">SEND MESSAGE</button>
+
+                </form>
+
+            </div>
+
+            <!-- Contact Details -->
+            <div class="contact-details">
+
+                <h2>My Contact Details</h2>
+
+                <div class="detail">
+                    <h4>EMAIL</h4>
+                    <a href="mailto:hello@example.com" class="email">
+                        hello@example.com
+                    </a>
+                </div>
+
+                <div class="detail">
+                    <h4>PHONE</h4>
+                    <a href="tel:+15550132468">
+                        +1 (555) 013-2468
+                    </a>
+                </div>
+
+                <div class="detail">
+                    <h4>FAX</h4>
+                    <p>+1 (555) 013-2469</p>
+                </div>
+
+                <div class="detail">
+                    <h4>ADDRESS</h4>
+                    <p>
+                        128 Sample Street, 4th Floor<br>
+                        San Francisco, CA 94107
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <footer>
+        <p>Copyright &copy; 2026 My Portfolio</p>
+    </footer>
+
+</body>
+
+</html>
